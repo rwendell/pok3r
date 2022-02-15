@@ -1,6 +1,5 @@
 import { Grommet, Main } from "grommet";
 import type { AppProps } from "next/app";
-import { acme } from "../acme-theme";
 
 const theme = {
   global: {
@@ -55,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         margin: 0px;
       }
 
-      
+
     `}</style>
       <Main background="dark-1" basis="3/4">
         <Component {...pageProps} />
