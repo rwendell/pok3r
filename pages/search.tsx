@@ -1,8 +1,7 @@
-import { Box, Button, RangeInput } from "grommet";
+import { Box, Button, RangeInput, Form } from "grommet";
 import { NextPage } from "next";
 import Link from "next/link";
 import { useState } from "react";
-import styled from "styled-components";
 
 
 const Search: NextPage = () => {
@@ -13,7 +12,7 @@ const Search: NextPage = () => {
 
   return (
     <Box align="center">
-      <form>
+      <Form>
         <h1>Select a search radius</h1>
         <RangeInput
           value={searchDistance}
@@ -33,7 +32,7 @@ const Search: NextPage = () => {
           label="Search"
         />
         </Link>
-      </form>
+      </Form>
     </Box>
   );
 };

@@ -45,18 +45,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Grommet theme={theme}>
       {/* This is probably going to be a temporary fix, maybe idk */}
       <style global jsx>{`
-      html,
-      body,
-      body > div:first-child,
-      div#__next,
-      div#__next > div {
-        height: 100%;
-        margin: 0px;
-      }
-
-
-    `}</style>
-      <Main background="dark-1" basis="3/4">
+        html,
+        body,
+        body > div:first-child,
+        div#__next,
+        div#__next > div {
+          height: 100%;
+          margin: 0px;
+        }
+      `}</style>
+      <Main background="dark-1" >
         <Component {...pageProps} />
       </Main>
     </Grommet>
