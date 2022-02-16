@@ -3,33 +3,27 @@ import { ethers } from "ethers";
 import { Button } from "grommet";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-
-
+import useSWR from "swr";
 
 export const Authenticate = () => {
   const [provider, setProvider] = useState<Web3Provider | null>(null);
-  const [login, setLogin] = useState(false)
+  useEffect(() => {
+    setProvider(new ethers.providers.Web3Provider(window.ethereum));
+  }, []);
 
+  const isLoggedIn = async () => !!(await provider!.listAccounts())?.length;
+  const { data: loginData } = useSWR("isLoggedIn", isLoggedIn);
 
-  // TODO This is very VERY ugly.  Research a better implementation of how to take care of this
-  useEffect(
-    () => {
-      setProvider(new ethers.providers.Web3Provider(window.ethereum))
-      const isLoggedIn = async () => setLogin(!!(await provider!?.listAccounts())?.length)
-      isLoggedIn();
-    },
-    [provider, login, setProvider]
-  );
+  console.log(loginData);
 
+  console.log();
   const getAccount = async () => {
     await provider!.send("eth_requestAccounts", []);
-  }
-
+  };
 
   return (
     <>
-      {login ? (
+      {loginData ? (
         <Link href={"/search"} passHref>
           <Button primary label="Find Tables" />
         </Link>
