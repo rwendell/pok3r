@@ -8,7 +8,7 @@ const Home: NextPage = () => {
     <Box align="center">
       <Header />
       <Authenticate />
-    </ Box>
+    </Box>
   );
 };
 
